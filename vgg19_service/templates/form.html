@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Type Classifier</title>
+    <style>
+        body {
+            background-color: #f9c7d8;
+            color: #ff0066;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #ff99b3;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(255, 0, 102, 0.5);
+            width: 60%;
+            text-align: center;
+        }
+
+        form p {
+            margin: 20px 0;
+            color: #ff0066;
+            font-size: 1.5rem;
+        }
+
+        form input {
+            display: none;
+        }
+
+        form button {
+            background-color: #ff0066;
+            color: #fff;
+            border: none;
+            padding: 15px 0;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1.2rem;
+        }
+
+        form button:hover {
+            background-color: #cc0052;
+        }
+
+        label {
+            font-size: 1.2rem;
+            padding-right: 10px;
+            color: #ff0066;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select {
+            font-size: 1rem;
+            padding: 8px;
+            width: calc(100% - 22px);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #ff0066;
+            text-align: center;
+            font-size: 2.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Music Classifier &nbsp &nbsp</h1>
+    <form method="POST" action="/classify" enctype="multipart/form-data">
+        <label for="file">Click here to choose a file </label>
+        <input type="file" name="file" id="file">
+        <label for="pet-select">Choose a model:</label>
+        <select name="model_selected" id="pet-select">
+            <option value="none">--Please choose an option--</option>
+            <option value="svm">SVM model</option>
+            <option value="vgg">Vgg-19 model</option>
+        </select>
+        <br><br>
+        <button type="submit">Upload</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#file').change(function () {
+                $('form p').text(this.files.length + " file(s) selected");
+            });
+        });
+    </script>
+</body>
+</html>
+

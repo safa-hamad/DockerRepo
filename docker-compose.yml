@@ -1,0 +1,28 @@
+version: '3'
+services:
+  svm_service:
+    build:
+      context: ./svm_service
+      dockerfile: ./Dockerfile
+    ports:
+      - "56739:80"
+    volumes:
+      - ./svm_service:/app
+
+  vgg19_service:
+    build:
+      context: ./vgg19_service
+      dockerfile: ./Dockerfile
+    ports:
+      - "56740:80"
+    volumes:
+      - ./vgg19_service:/app
+
+  front_service:
+    build:
+      context: ./front_service
+      dockerfile: ./Dockerfile
+    ports:
+      - "56741:80"
+    volumes:
+      - ./front_service:/app
